@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import configureStore from './app/store/configureStore';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-// import App from './app/containers/App';
+import App from './app/containers';
 import Home from './app/containers/home'
 
 const store = configureStore()
@@ -14,7 +14,10 @@ const store = configureStore()
 ReactDOM.render((<Provider store={store}>
   <div>
     <BrowserRouter>
-      <Route path='/' component={Home}></Route>
+      <Switch>
+        <Route exact path="/" component={App}/>
+        <Route exact path="/home" component={Home}/>
+      </Switch>
     </BrowserRouter>
   </div>
 </Provider>
